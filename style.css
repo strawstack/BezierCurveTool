@@ -1,0 +1,22 @@
+svg {
+    border: 1px solid #333;
+}
+path {
+    fill: transparent;
+    stroke: lightsalmon;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+circle {
+    fill: salmon;
+    transition: r 0.2s linear;
+}
+circle.hollow {
+    stroke: salmon;
+    fill: #DDD;
+    transition: r 0.2s linear;
+}
+circle:hover {
+    r: 12;
+    cursor: pointer;
+}
