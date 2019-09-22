@@ -22,4 +22,4 @@ Click [here](https://strawstack.github.io/BezierCurveTool/) for a live demo
 
 # Screenshot
 
-![](./screenshot.png)
+![](./Screenshot.png)
