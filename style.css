@@ -1,4 +1,12 @@
+body {
+    display: flex;
+}
+img {
+    position: relative;
+    opacity: 0.5;
+}
 svg {
+    position: absolute;
     border: 1px solid #333;
 }
 path {

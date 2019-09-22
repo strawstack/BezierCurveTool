@@ -2,8 +2,8 @@ class CurveTool {
     constructor(svg) {
         this.svg = svg;
         this.state = {
-            // M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80
-            points: [[40, 10], [10, 80], [65, 10], [95, 80], [150, 150], [180, 80]],
+            points: [[332, 143], [241, 127], [364, 148], [357, 211], [415, 346], [399, 437], [336, 532], [314, 648], [291, 668], [250, 630], [243, 440], [174, 392], [185, 301], [215, 258]],
+            //points: [[40, 10], [10, 80], [65, 10], [95, 80]],
             target: undefined
         };
         this.listen();
@@ -39,7 +39,7 @@ class CurveTool {
         });
         this.svg.addEventListener("mousedown", (e) => {
             this.state.points.push([e.offsetX, e.offsetY]);
-            this.state.points.push([e.offsetX, e.offsetY + 20]);
+            this.state.points.push([e.offsetX, e.offsetY + 35]);
             this.renderState();
         });
     }
@@ -85,10 +85,12 @@ class CurveTool {
         let d = "M " + this.state.points[1].join(" ");
         d += " C " + this.state.points[0].join(" ");
         d += ", " + this.state.points[2].join(" ") + ", " +  this.state.points[3].join(" ");
+
         for (let i = 4; i < this.state.points.length - 1; i += 2) {
             d += " S " + this.state.points[i].join(" ") + ", " + this.state.points[i + 1].join(" ");
         }
-        path.setAttributeNS(null, "d", d);
+        if (d !== "")
+            path.setAttributeNS(null, "d", d);
 
         // Append path to SVG element
         this.svg.appendChild(path);
@@ -109,7 +111,11 @@ class CurveTool {
             }
 
             c.addEventListener('mousedown', (e) => {
-                this.state.target = i;
+                if (e.shiftKey && i % 2 === 1 && this.state.points.length > 4) {
+                    this.state.points.splice(i - 1, 2);
+                } else {
+                    this.state.target = i;
+                }
                 this.renderState();
                 e.stopPropagation();
             });
