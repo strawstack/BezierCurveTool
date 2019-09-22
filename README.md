@@ -10,7 +10,7 @@ Easily add and remove points and control points from an SVG Bezier curve in orde
 
 # Live Demo
 
-Click [here]() for a live demo
+Click [here](https://strawstack.github.io/BezierCurveTool/) for a live demo
 
 # How to Use
 
